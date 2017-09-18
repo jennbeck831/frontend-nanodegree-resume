@@ -39,10 +39,11 @@ $("#header").append(formattedLocation);
 $("#header").append(formattedPic);
 $("#header").append(formattedWelcome);
 
+var skillIndex;
 if (bio.skills.length>0) {
 	$("#header").append(HTMLskillsStart);
 
-	for (var skillIndex=0; skillIndex<bio.skills.length; skillIndex++) {
+	for (skillIndex in bio.skills) {
 
 		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skillIndex]);
 		$("#header").append(formattedSkills);
