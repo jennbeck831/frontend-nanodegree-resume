@@ -77,6 +77,7 @@ var work = { "jobs" : [
 	"location" : "Carlisle, PA",
 	"description": "Diagnose and fix software and hardware issues in the school's computer lab"}]}
 
+function displayWork() {
 	for (job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer =HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -85,13 +86,13 @@ var work = { "jobs" : [
 		$(".work-entry:last").append(formattedEmployerTitle);
 		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
 		$(".work-entry:last").append(formattedDates);
-//		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-//		$(".work-entry:last").append(formattedLocation);
+		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		$(".work-entry:last").append(formattedLocation);
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 		$(".work-entry:last").append(formattedDescription);	
 	}
-
-
+}
+displayWork();
 //Projects completed
 var projects = 
 [ {"title": "Portfolio",
