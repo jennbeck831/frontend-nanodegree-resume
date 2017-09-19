@@ -1,5 +1,4 @@
 
-
 //Biographical info
 var bio = { "name": "Jennifer Pearson", 
 			"role": "Web Developer",
@@ -93,6 +92,16 @@ function displayWork() {
 	}
 }
 displayWork();
+
+$("#main").append(internationalizeButton);
+
+function inName(name) {
+	name = name.trim().split(" ");
+	console.log(name);
+	name[1] = name[1].toUpperCase();
+	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+	return(name[0]+ " " + name[1]);
+}
 
 function locationizer(work_obj) {
     var jobArray = [];
