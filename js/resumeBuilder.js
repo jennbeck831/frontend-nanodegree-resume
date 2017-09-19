@@ -93,6 +93,16 @@ function displayWork() {
 	}
 }
 displayWork();
+
+function locationizer(work_obj) {
+    var jobArray = [];
+    for (jobIndex = 0; jobIndex<work.jobs.length; jobIndex++) {
+        jobArray.push(work.jobs[jobIndex].location);
+    }
+    return jobArray;
+}
+//console.log(locationizer(work));
+
 //Projects completed
 var projects = 
 [ {"title": "Portfolio",
