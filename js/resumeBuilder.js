@@ -47,9 +47,6 @@ if (bio.skills.length>0) {
 
 		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skillIndex]);
 		$("#header").append(formattedSkills);
-
-//	var formattedSkills = HTMLskills.replace("%data%", bio.skills[2]);
-//	$("#header").append(formattedSkills);
 	}
 
 }
@@ -79,6 +76,21 @@ var work = { "jobs" : [
 	"dates" : "1990-1994",
 	"location" : "Carlisle, PA",
 	"description": "Diagnose and fix software and hardware issues in the school's computer lab"}]}
+
+	for (job in work.jobs) {
+		$("#workExperience").append(HTMLworkStart);
+		var formattedEmployer =HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var formattedEmployerTitle = formattedEmployer+formattedTitle;
+		$(".work-entry:last").append(formattedEmployerTitle);
+		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		$(".work-entry:last").append(formattedDates);
+//		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+//		$(".work-entry:last").append(formattedLocation);
+		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		$(".work-entry:last").append(formattedDescription);	
+	}
+
 
 //Projects completed
 var projects = 
