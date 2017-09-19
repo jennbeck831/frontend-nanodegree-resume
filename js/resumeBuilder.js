@@ -182,9 +182,9 @@ var education =
 	]
 }
 
-//$("#main").append(bio.name);
-//var awesomeThoughts = "I am Jenn and I am AWESOME!";
-//var funThoughts = awesomeThoughts.replace("AWESOME","FUN");
+$(document).click(function(loc) {
+  // your code goes here
+  	var x = loc.pageX;
+  	var y = loc.pageY;
+	logClicks(x, y)});
 
-//$("#main").append(funThoughts);
-//console.log(awesomeThoughts);
