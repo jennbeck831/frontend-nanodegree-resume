@@ -38,22 +38,32 @@ $("#header").append(formattedLocation);
 $("#header").append(formattedPic);
 $("#header").append(formattedWelcome);
 
-var skillIndex;
-if (bio.skills.length>0) {
-	$("#header").append(HTMLskillsStart);
-
-	for (skillIndex in bio.skills) {
-
-		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skillIndex]);
-		$("#header").append(formattedSkills);
+//format and display skills
+bio.displaySkills = function() {
+	var skillIndex;
+	if (bio.skills.length>0) {
+		$("#header").append(HTMLskillsStart);
+		for (skillIndex in bio.skills) {
+			var formattedSkills = HTMLskills.replace("%data%", bio.skills[skillIndex]);
+			$("#header").append(formattedSkills);
+		}
 	}
-
 }
-//$("#header").append(formattedPosition);
-//$("#header").append(formattedSchool);
+bio.displaySkills();
+
+//Converts bio.name to international format
+function inName(name) {
+	name = name.trim().split(" ");
+	console.log(name);
+	name[1] = name[1].toUpperCase();
+	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+	return(name[0]+ " " + name[1]);
+}
+
 
 
 //Work Experience
+
 var work = { "jobs" : [
 	{ "employer" : "Pearson Academy",
 	"title" : "Homeschool Teacher",
@@ -76,7 +86,8 @@ var work = { "jobs" : [
 	"location" : "Carlisle, PA",
 	"description": "Diagnose and fix software and hardware issues in the school's computer lab"}]}
 
-function displayWork() {
+//Display work experience details
+work.display = function() {
 	$("#workExperience").append(HTMLworkStart);
 	for (job in work.jobs) {
 		var formattedEmployer =HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -91,15 +102,8 @@ function displayWork() {
 		$(".work-entry:last").append(formattedDescription);	
 	}
 }
-displayWork();
+work.display();
 
-function inName(name) {
-	name = name.trim().split(" ");
-	console.log(name);
-	name[1] = name[1].toUpperCase();
-	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-	return(name[0]+ " " + name[1]);
-}
 
 function locationizer(work_obj) {
     var jobArray = [];
@@ -214,7 +218,7 @@ var education =
 	]
 }
 
-function schoolDisplay() {
+education.schoolDisplay = function() {
 	$("#education").append(HTMLschoolStart);
 	for (school=0; school<education.schools.length; school++) {
 		var formattedName =HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -229,9 +233,9 @@ function schoolDisplay() {
 		$(".education-entry:last").append(formattedDates);
 	}
 }
-schoolDisplay();
+education.schoolDisplay();
 
-function onlineCourseDisplay() {
+education.onlineCourseDisplay = function() {
 	$(".education-entry").append(HTMLonlineClasses);
 	for (course=0; course<education.onlineCourses.length; course++) {
 		var formattedTitle =HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
@@ -244,7 +248,7 @@ function onlineCourseDisplay() {
 		$(".education-entry:last").append(formattedURL);
 	}
 }
-onlineCourseDisplay();
+education.onlineCourseDisplay();
 
 
 $(document).click(function(loc) {
