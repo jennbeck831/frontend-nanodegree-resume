@@ -93,8 +93,6 @@ function displayWork() {
 }
 displayWork();
 
-$("#main").append(internationalizeButton);
-
 function inName(name) {
 	name = name.trim().split(" ");
 	console.log(name);
@@ -148,6 +146,21 @@ var projects =
 	"images":["images/missions.jpg"] }
 ]
 
+projects.display = function() {
+	for (project=0; project<projects.length; project++) {
+		$("#projects").append(HTMLprojectStart);
+		var formattedTitle =HTMLprojectTitle.replace("%data%", projects[project].title);
+		$(".project-entry:last").append(formattedTitle);
+		var formattedDates = HTMLprojectDates.replace("%data%", projects[project].dates);
+		$(".project-entry:last").append(formattedDates);
+		var formattedDescription = HTMLprojectDescription.replace("%data%", projects[project].description);
+		$(".project-entry:last").append(formattedDescription);
+		var formattedImages = HTMLprojectImage.replace("%data%", projects[project].images);
+		$(".project-entry:last").append(formattedImages);	
+	}
+
+}
+projects.display();
 
 //Education objects
 var education = 
@@ -207,3 +220,9 @@ $(document).click(function(loc) {
   	var y = loc.pageY;
 	logClicks(x, y)});
 
+//Add button to internationalize name
+$("#main").append(internationalizeButton);
+
+
+//add a map
+$("mapDiv").append(googleMap);
