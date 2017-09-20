@@ -77,8 +77,8 @@ var work = { "jobs" : [
 	"description": "Diagnose and fix software and hardware issues in the school's computer lab"}]}
 
 function displayWork() {
+	$("#workExperience").append(HTMLworkStart);
 	for (job in work.jobs) {
-		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployer =HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 		var formattedEmployerTitle = formattedEmployer+formattedTitle;
@@ -147,8 +147,8 @@ var projects =
 ]
 
 projects.display = function() {
-	for (project=0; project<projects.length; project++) {
 		$("#projects").append(HTMLprojectStart);
+	for (project=0; project<projects.length; project++) {
 		var formattedTitle =HTMLprojectTitle.replace("%data%", projects[project].title);
 		$(".project-entry:last").append(formattedTitle);
 		var formattedDates = HTMLprojectDates.replace("%data%", projects[project].dates);
@@ -169,7 +169,7 @@ var education =
 	"location" : "Carlisle, PA",
 	"degree": "BS",
 	"majors" : ["CS"],
-	"degree dates": 1994,
+	"dates": 1994,
 	"yearsAttended" : "1990-1994",
 	"url": "http://www.dickinson.edu/homepage/57/computer_science"
 	},
@@ -178,11 +178,11 @@ var education =
 	"location" : "Wilmore, KY",
 	"degree": "MA",
 	"majors" : ["World Missions"],
-	"degree dates": 1997,
+	"dates": 1997,
 	"yearsAttended" : "1995-1997",
 	"url": "http://asburyseminary.edu/" }
 	],
-  "online courses" : [
+  "onlineCourses" : [
 	{"title" : "JavaScript Basics",
 	 "school": "Udacity",
 	 "dates" : 2017,
@@ -213,6 +213,39 @@ var education =
 	 "url" : "http://www.udacity.com/course/intro-to-html-and-css--ud304"}
 	]
 }
+
+function schoolDisplay() {
+	$("#education").append(HTMLschoolStart);
+	for (school=0; school<education.schools.length; school++) {
+		var formattedName =HTMLschoolName.replace("%data%", education.schools[school].name);
+		$(".education-entry:last").append(formattedName);
+		var formattedLocation =HTMLschoolLocation.replace("%data%", education.schools[school].location);
+		$(".education-entry:last").append(formattedLocation);
+		var formattedDegree =HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+		$(".education-entry:last").append(formattedDegree);
+		var formattedMajors =HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+		$(".education-entry:last").append(formattedMajors);
+		var formattedDates =HTMLschoolDates.replace("%data%", education.schools[school].dates);
+		$(".education-entry:last").append(formattedDates);
+	}
+}
+schoolDisplay();
+
+function onlineCourseDisplay() {
+	$(".education-entry").append(HTMLonlineClasses);
+	for (course=0; course<education.onlineCourses.length; course++) {
+		var formattedTitle =HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+		$(".education-entry:last").append(formattedTitle);
+		var formattedSchool =HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+		$(".education-entry:last").append(formattedSchool);
+		var formattedDates =HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+		$(".education-entry:last").append(formattedDates);
+		var formattedURL =HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+		$(".education-entry:last").append(formattedURL);
+	}
+}
+onlineCourseDisplay();
+
 
 $(document).click(function(loc) {
   // your code goes here

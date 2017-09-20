@@ -1,9 +1,6 @@
 /*
-
 This file contains all of the code running in the background that makes resumeBuilder.js possible. We call these helper functions because they support your code in this course.
-
 Don't worry, you'll learn what's going on in this file throughout the course. You won't need to make any changes to it until you start experimenting with inserting a Google Map in Problem Set 3.
-
 Cameron Pittman
 */
 
@@ -114,7 +111,7 @@ function initializeMap() {
   For the map to be displayed, the googleMap var must be
   appended to #mapDiv in resumeBuilder.js.
   */
-  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+//  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
 
   /*
@@ -135,6 +132,9 @@ function initializeMap() {
     // https://udacity.github.io/frontend-nanodegree-styleguide/javascript.html#for-in-loop
     education.schools.forEach(function(school){
       locations.push(school.location);
+
+    //is it working?
+    console.log("locations");
     });
 
     // iterates through work locations and appends each location to
@@ -207,7 +207,7 @@ function initializeMap() {
 
     // creates a Google place search service object. PlacesService does the work of
     // actually searching for location data.
-    var service = new google.maps.places.PlacesService(map);
+//    var service = new google.maps.places.PlacesService(map);
 
     // Iterates through the array of locations, creates a search object for each location
       locations.forEach(function(place){
@@ -218,12 +218,12 @@ function initializeMap() {
 
       // Actually searches the Google Maps API for location data and runs the callback
       // function with the search results after each search.
-      service.textSearch(request, callback);
+ //     service.textSearch(request, callback);
     });
   }
 
   // Sets the boundaries of the map based on pin locations
-  window.mapBounds = new google.maps.LatLngBounds();
+ // window.mapBounds = new google.maps.LatLngBounds();
 
   // locations is an array of location strings returned from locationFinder()
   locations = locationFinder();
