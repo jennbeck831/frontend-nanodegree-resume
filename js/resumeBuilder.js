@@ -262,4 +262,4 @@ $("#main").append(internationalizeButton);
 
 
 //add a map
-$("mapDiv").append(googleMap);
+$("#mapDiv").append(googleMap);

@@ -111,7 +111,7 @@ function initializeMap() {
   For the map to be displayed, the googleMap var must be
   appended to #mapDiv in resumeBuilder.js.
   */
-//  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+    map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
 
   /*
@@ -134,7 +134,7 @@ function initializeMap() {
       locations.push(school.location);
 
     //is it working?
-    console.log("locations");
+    console.log(locations);
     });
 
     // iterates through work locations and appends each location to
@@ -207,7 +207,7 @@ function initializeMap() {
 
     // creates a Google place search service object. PlacesService does the work of
     // actually searching for location data.
-//    var service = new google.maps.places.PlacesService(map);
+    var service = new google.maps.places.PlacesService(map);
 
     // Iterates through the array of locations, creates a search object for each location
       locations.forEach(function(place){
@@ -218,12 +218,12 @@ function initializeMap() {
 
       // Actually searches the Google Maps API for location data and runs the callback
       // function with the search results after each search.
- //     service.textSearch(request, callback);
+      service.textSearch(request, callback);
     });
   }
 
   // Sets the boundaries of the map based on pin locations
- // window.mapBounds = new google.maps.LatLngBounds();
+  window.mapBounds = new google.maps.LatLngBounds();
 
   // locations is an array of location strings returned from locationFinder()
   locations = locationFinder();
@@ -245,5 +245,5 @@ window.addEventListener('load', initializeMap);
 // and adjust map bounds
 //window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
+  map.fitBounds(mapBounds);
 //});
