@@ -45,7 +45,7 @@ bio.displaySkills = function() {
 		$("#header").append(HTMLskillsStart);
 		for (skillIndex in bio.skills) {
 			var formattedSkills = HTMLskills.replace("%data%", bio.skills[skillIndex]);
-			$("#header").append(formattedSkills);
+			$("#skills").append(formattedSkills);
 		}
 	}
 }
