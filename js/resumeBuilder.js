@@ -2,7 +2,7 @@
 //Biographical info
 var bio = { "name": "Jennifer Pearson", 
 			"role": "Web Developer",
-			"welcomeMessage": "Homeschool Mom in GA re-entering the work force ",
+			"welcomeMessage": "Homeschool Mom developing websites in GA",
 			"contacts": { 
 				"email": "jenn@pearson.org",
 				"mobile": "770-424-7951", 
